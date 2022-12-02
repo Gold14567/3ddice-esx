@@ -8,12 +8,12 @@ version "1.0.0"
 
 client_scripts {
     'config.lua',
-    'client/RollDice.lua',
+    'client.lua',
 }
 
 server_scripts {
-	'@oxmysql/lib/MySQL.lua',
+    '@oxmysql/lib/MySQL.lua',
     'config.lua',
-    'server/RollDice.lua',
+    'server.lua',
 }
 
