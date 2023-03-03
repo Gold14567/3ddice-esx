@@ -4,14 +4,14 @@ local globalPlayerPedId = nil
 
 Citizen.CreateThread(function()  --Creates a suggestion box if you are using the /roll command through the config.
     if(RollDice.UseCommand)then
-        TriggerEvent('chat:addSuggestion', '/' .. RollDice.ChatCommand, '1 ile 12 arasında bir sayı gelir')
+        TriggerEvent('chat:addSuggestion', '/' .. RollDice.ChatCommand, 'Comes with a number between 1 and 12')
     end
 end)
 
 RegisterNetEvent("RollDice:Client:Roll")
 AddEventHandler("RollDice:Client:Roll", function(sourceId, maxDinstance, rollTable, sides, location)
     local rollString = CreateRollString(rollTable, sides) --Calls the create roll string function to get the 3d text value. Sends the tabler variable and the amount of sides.
-    globalPlayerPedId = GetPlayerPed(-1)
+    globalPlayerPedId = PlayerPedId()
     
 
     if(location.x == 0.0 and location.y == 0.0 and location.z == 0.0)then --THIS ONLY RUNS IF YOU ARE NOT USING ONESYNC
@@ -33,7 +33,7 @@ function CreateRollString(rollTable, sides) --Creates the string that will be sh
         total = total + roll
     end
 
-    text = 'Zarın üzerinde '..total..' yazdığı görülebilir'
+    text = 'It can be seen that '..total..' is written on the dice'
 	zar = total
     return text
 end
